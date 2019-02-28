@@ -1,0 +1,87 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "setup": {
+    "db": true,
+    "initial_user": false
+  },
+  "authentication": {
+    "secret": "3e1112df60b9100d999395210ce2988db2df1c1c3cd0f9aeb7c912272e2677d21bba061fd9bca02328da513ceac5ef28c0855209ccde632b2c385fed225dee65f32c609143187130d6928335c475a4c4a80c093728d7c3c1d1ab7037443eb21fabe5ea5c9b134f3037d1db39054f2071f7324afb0ba3bfabd1356354b4e83a7529392738d983b598d1158a3aee15039b1371ae3f0d668ae4a6acebc4fb0412a329d7d4a428b6a8dcf1bf046c74627d7de0ea4c7a3a447eaabaca996985e015f8920626cc71c3d708df0220f39f6939e859e5546c2c5f5f03a47e6dfe781a580858b83f893e7fef02ce3b9c6e1688cb107939e5732c005f2f2a9cd6e10d3d12ae",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "entity": "user",
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "auth0": {
+      "clientID": "your auth0 client id",
+      "clientSecret": "your auth0 client secret",
+      "successRedirect": "/",
+      "domain": "mydomain.auth0.com",
+      "scopes": [
+        "profile"
+      ]
+    },
+    "google": {
+      "clientID": "your google client id",
+      "clientSecret": "your google client secret",
+      "successRedirect": "/",
+      "scope": [
+        "profile openid email"
+      ]
+    },
+    "facebook": {
+      "clientID": "your facebook client id",
+      "clientSecret": "your facebook client secret",
+      "successRedirect": "/",
+      "scope": [
+        "public_profile",
+        "email"
+      ],
+      "profileFields": [
+        "id",
+        "displayName",
+        "first_name",
+        "last_name",
+        "email",
+        "gender",
+        "profileUrl",
+        "birthday",
+        "picture",
+        "permissions"
+      ]
+    },
+    "github": {
+      "clientID": "your github client id",
+      "clientSecret": "your github client secret",
+      "successRedirect": "/"
+    },
+    "cookie": {
+      "enabled": true,
+      "name": "feathers-jwt",
+      "httpOnly": false,
+      "secure": false
+    }
+  },
+  "nedb": "../data"
+}
